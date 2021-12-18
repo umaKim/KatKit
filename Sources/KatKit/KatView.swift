@@ -12,8 +12,6 @@ public class KatView: UIView {
     //MARK: - UI Objects
     private lazy var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        cv.dataSource = self
-        cv.delegate = self
         cv.backgroundColor = .systemGray5
         cv.isScrollEnabled = true
         cv.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
@@ -23,6 +21,9 @@ public class KatView: UIView {
     
     //MARK: - Model
     public var categories: [String] = []
+    
+    //MARK: - DataSource
+    public weak var dataSource: KatViewDataSource?
     
     //MARK: - Delegate
     public weak var delegate: KatViewDelegate?
@@ -47,13 +48,15 @@ extension KatView {
 //MARK: - CollectionView DataSource
 extension KatView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        categories.count
+//        categories.count
+        dataSource?.numberOfItems(numberOfItemsInSection: categories.count) ?? 0
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
         cell.configure(with: categories[indexPath.row])
-        return cell
+//        return cell
+        return dataSource?.katView(cellForItemAt: indexPath) ?? UICollectionViewCell()
     }
 }
 
@@ -70,11 +73,7 @@ extension KatView {
     private func configureCollectionView() {
         collectionView.register(KatViewCell.self, forCellWithReuseIdentifier: KatViewCell.identifier)
         
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .horizontal
-            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            layout.itemSize = UICollectionViewFlowLayout.automaticSize
-        }
+        layoutConfiguration(for: collectionView.collectionViewLayout)
         
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,5 +84,13 @@ extension KatView {
             collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+    
+    private func layoutConfiguration(for layout: UICollectionViewLayout) {
+        if let layout = layout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            layout.itemSize = UICollectionViewFlowLayout.automaticSize
+        }
     }
 }
