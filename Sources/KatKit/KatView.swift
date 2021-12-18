@@ -16,7 +16,7 @@ public class KatView: UIView {
         cv.delegate = self
         cv.backgroundColor = .systemGray5
         cv.isScrollEnabled = true
-        cv.contentInset = .init(top: 0, left: 16, bottom: 0, right: -16)
+        cv.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         cv.showsHorizontalScrollIndicator = false
         return cv
     }()
