@@ -8,8 +8,8 @@
 import UIKit
 
 public protocol KatViewDataSource: AnyObject {
-    func numberOfItems(numberOfItemsInSection section: Int) -> Int
-    func katView(cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    func katView(numberOfItemsInSection section: Int) -> Int
+    func katView(_ katView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
 }
  
 //class KatViewDataSource: NSObject, UICollectionViewDataSource {

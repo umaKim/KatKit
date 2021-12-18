@@ -49,22 +49,23 @@ extension KatView {
 extension KatView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        categories.count
-        dataSource?.numberOfItems(numberOfItemsInSection: categories.count) ?? 0
+        dataSource?.katView(numberOfItemsInSection: section) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
-        cell.configure(with: categories[indexPath.row])
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
+//        cell.configure(with: categories[indexPath.row])
 //        return cell
-        return dataSource?.katView(cellForItemAt: indexPath) ?? UICollectionViewCell()
+        return dataSource?.katView(collectionView, cellForItemAt: indexPath) ?? UICollectionViewCell()
     }
 }
 
 //MARK: - CollectionView Delegate
 extension KatView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        delegate?.katViewCellDidTap(category: categories[indexPath.row], dudSelectItemAt: indexPath)
+//        collectionView.deselectItem(at: indexPath, animated: true)
+//        delegate?.katViewCellDidTap(categories[indexPath.row], didSelectItemAt: indexPath)
+        delegate?.katViewCellDidTap(collectionView, didSelectItemAt: indexPath)
     }
 }
 
