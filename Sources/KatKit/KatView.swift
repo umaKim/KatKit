@@ -22,10 +22,10 @@ public class KatView: UIView {
     }()
     
     //MARK: - Model
-    var categories: [String] = []
+    public var categories: [String] = []
     
     //MARK: - Delegate
-    weak var delegate: KatViewDelegate?
+    public weak var delegate: KatViewDelegate?
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -39,7 +39,7 @@ public class KatView: UIView {
 }
 
 extension KatView {
-    func reloadData() {
+    public func reloadData() {
         collectionView.reloadData()
     }
 }

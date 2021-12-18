@@ -7,6 +7,6 @@
 
 import UIKit
 //MARK: - KatView Delegate
-protocol KatViewDelegate: AnyObject {
+public protocol KatViewDelegate: AnyObject {
     func katViewCellDidTap(category: String, dudSelectItemAt indexPath: IndexPath)
 }
