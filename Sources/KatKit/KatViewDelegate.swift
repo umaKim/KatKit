@@ -11,6 +11,12 @@ public protocol KatViewDelegate: AnyObject {
     func katViewCellDidTap(_ katView: UICollectionView, didSelectItemAt indexPath: IndexPath)
 }
 
+extension KatViewDelegate {
+    func katViewCellDidTap(_ katView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
+
 //class KatViewDelegate: NSObject, UICollectionViewDelegate {
 //    private var categories: [String]
 //    
