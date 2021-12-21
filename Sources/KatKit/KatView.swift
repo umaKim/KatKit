@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class KatView: UIView{
+public class KatView: UIView {
     
     //MARK: - UI Objects
     private lazy var collectionView: UICollectionView = {
@@ -60,7 +60,7 @@ extension KatView: UICollectionViewDataSource {
 //MARK: - CollectionView Delegate
 extension KatView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.katView(didSelectItemAt: items[indexPath.row])
+        delegate?.katView(collectionView, didSelectItemAt: indexPath)
     }
 }
 

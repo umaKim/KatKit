@@ -8,5 +8,5 @@
 import UIKit
 //MARK: - KatView Delegate
 public protocol KatViewDelegate: AnyObject {
-    func katView(didSelectItemAt item: String)
+    func katView(_ katView: UICollectionView, didSelectItemAt indexPath: IndexPath)
 }
