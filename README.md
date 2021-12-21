@@ -13,7 +13,11 @@ For Rules, select Version (Up to Next Major) and click Next.
 Click Finish.
 
 ## Usage
-
+```Swift
+let katView = KatView()
+katView.delegate = self
+katView.items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8",]
+```
 
 ## Requirements
 iOS 14.0+
