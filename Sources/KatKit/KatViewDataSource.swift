@@ -8,19 +8,19 @@
 import UIKit
 
 public protocol KatViewDataSource: AnyObject {
-    var categories: [String ] {get set}
+    var items: [String] {get set}
     
     func katView(numberOfItemsInSection section: Int) -> Int
     func katView(_ katView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
 }
 
-extension KatViewDataSource {
-    func katView(_ katView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = katView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
-            cell.configure(with: categories[indexPath.row])
-        return cell
-    }
-}
+//extension KatViewDataSource {
+//    func defaultKatView(_ katView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = katView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
+//            cell.configure(with: categories[indexPath.row])
+//        return cell
+//    }
+//}
  
 //class KatViewDataSource: NSObject, UICollectionViewDataSource {
 //    

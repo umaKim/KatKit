@@ -7,8 +7,8 @@
 
 import UIKit
 
-public class KatView: UIView {
-
+public class KatView: UIView{
+    
     //MARK: - UI Objects
     private lazy var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -20,10 +20,10 @@ public class KatView: UIView {
     }()
     
     //MARK: - Model
-    public var categories: [String] = []
+    public var items: [String] = []
     
     //MARK: - DataSource
-    public weak var dataSource: KatViewDataSource?
+//    public weak var dataSource: KatViewDataSource?
     
     //MARK: - Delegate
     public weak var delegate: KatViewDelegate?
@@ -32,6 +32,9 @@ public class KatView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCollectionView()
+        
+//        self.dataSource = self
+//        self.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -48,24 +51,23 @@ extension KatView {
 //MARK: - CollectionView DataSource
 extension KatView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        categories.count
-        dataSource?.katView(numberOfItemsInSection: section) ?? 0
+        items.count
+//        dataSource?.katView(numberOfItemsInSection: section) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
-//        cell.configure(with: categories[indexPath.row])
-//        return cell
-        return dataSource?.katView(collectionView, cellForItemAt: indexPath) ?? UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
+        cell.configure(with: items[indexPath.row])
+        return cell
+//        return dataSource?.katView(collectionView, cellForItemAt: indexPath) ?? UICollectionViewCell()
     }
 }
 
 //MARK: - CollectionView Delegate
 extension KatView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collectionView.deselectItem(at: indexPath, animated: true)
-//        delegate?.katViewCellDidTap(categories[indexPath.row], didSelectItemAt: indexPath)
-        delegate?.katViewCellDidTap(collectionView, didSelectItemAt: indexPath)
+//        delegate?.katViewCellDidTap(items[indexPath.row], didSelectItemAt: indexPath)
+        delegate?.katView(didSelectItemAt: items[indexPath.row])
     }
 }
 

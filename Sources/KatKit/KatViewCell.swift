@@ -7,12 +7,12 @@
 
 import UIKit
 
-class KatViewCell: UICollectionViewCell {
+public class KatViewCell: UICollectionViewCell {
     static let identifier = "HeaderViewCell"
     
     //MARK: - UI Objects
     private let categoryLabel: PaddingLabel = {
-       let label = PaddingLabel()
+        let label = PaddingLabel()
         label.alpha = 1
         label.backgroundColor = .white
         label.textColor = .darkGray
