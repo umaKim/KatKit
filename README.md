@@ -1,5 +1,6 @@
 # KatKit
 KatKit is a Swift UI library for iOS. It looks similar to the Daagn market category horizontal scroll view, while allowing customization when needed.
+
 ![Simulator Screen Recording - iPhone 12 Pro - 2021-12-21 at 22 48 26](https://user-images.githubusercontent.com/85341050/146948782-d67593e7-5c7f-45c7-8ea8-b576cd01fbe4.gif)
 
 ## Installation
