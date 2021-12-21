@@ -12,9 +12,11 @@ public class KatView: UIView{
     //MARK: - UI Objects
     private lazy var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        cv.backgroundColor = .systemGray5
-        cv.isScrollEnabled = true
-        cv.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        cv.backgroundColor  = .systemGray5
+        cv.delegate         = self
+        cv.dataSource       = self
+        cv.isScrollEnabled  = true
+        cv.contentInset     = .init(top: 0, left: 16, bottom: 0, right: 16)
         cv.showsHorizontalScrollIndicator = false
         return cv
     }()
