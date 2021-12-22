@@ -22,7 +22,7 @@ public class KatView: UIView {
     }()
     
     //MARK: - Model
-    private let items: [String]
+    private var items: [String]
     
     //MARK: - Delegate
     public weak var delegate: KatViewDelegate?
@@ -39,6 +39,15 @@ public class KatView: UIView {
     }
 }
 
+//MARK: - Custom Items
+extension KatView {
+    public func setItems(_ items: [String]) {
+        self.items = items
+        self.reloadData()
+    }
+}
+
+//MARK: - Reload CollectionView
 extension KatView {
     public func reloadData() {
         collectionView.reloadData()
