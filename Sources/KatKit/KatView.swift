@@ -22,13 +22,14 @@ public class KatView: UIView {
     }()
     
     //MARK: - Model
-    public var items: [String] = []
+    private var items: [String]
     
     //MARK: - Delegate
     public weak var delegate: KatViewDelegate?
     
     //MARK: - Init
-    override init(frame: CGRect) {
+    init(frame: CGRect, items: [String] = []) {
+        self.items = items
         super.init(frame: frame)
         configureCollectionView()
     }
@@ -38,6 +39,15 @@ public class KatView: UIView {
     }
 }
 
+//MARK: - Custom Items
+extension KatView {
+    public func setItems(_ items: [String]) {
+        self.items = items
+        self.reloadData()
+    }
+}
+
+//MARK: - Reload CollectionView
 extension KatView {
     public func reloadData() {
         collectionView.reloadData()
@@ -47,12 +57,12 @@ extension KatView {
 //MARK: - CollectionView DataSource
 extension KatView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+        self.items.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
-        cell.configure(with: items[indexPath.row])
+        cell.configure(with: self.items[indexPath.row])
         return cell
     }
 }
