@@ -32,4 +32,4 @@ iOS 14.0+
 Swift 5+
 
 ## Author
-Richard Topchii
+Uma Kim
