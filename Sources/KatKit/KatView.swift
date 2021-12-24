@@ -32,7 +32,7 @@ public class KatView: UIView {
     public weak var delegate: KatViewDelegate?
     
     //MARK: - Init
-    init(frame: CGRect = .zero, items: [String] = []) {
+    public init(frame: CGRect = .zero, items: [String] = []) {
         self.items = items
         super.init(frame: frame)
         
