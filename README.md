@@ -22,8 +22,8 @@ katView.items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "It
 
 ```Swift
 katView.delegate = self
-func katView(didSelectItemAt item: String) {
- 
+func katView(_ katView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
 }
 ```
 
