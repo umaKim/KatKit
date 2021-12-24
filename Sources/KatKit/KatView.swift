@@ -21,6 +21,7 @@ public class KatView: UIView {
         return cv
     }()
     
+    //MARK: - Properties
     public var katViewBackgroundColor: UIColor? {
         didSet{ collectionView.backgroundColor = katViewBackgroundColor }
     }
@@ -35,7 +36,6 @@ public class KatView: UIView {
     public init(frame: CGRect = .zero, items: [String] = []) {
         self.items = items
         super.init(frame: frame)
-        
         configureCollectionView()
     }
     
