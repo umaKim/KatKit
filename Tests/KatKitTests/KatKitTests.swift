@@ -7,8 +7,5 @@ final class KatKitTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
 //        XCTAssertEqual(KatKit.text, "Hello, World!")
-        let kat = KatView()
-        kat.items = ["nice", "hoho"]
-        XCTAssertEqual(kat.items, ["nice", "hoho"])
     }
 }

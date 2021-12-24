@@ -21,6 +21,10 @@ public class KatView: UIView {
         return cv
     }()
     
+    public var katViewBackgroundColor: UIColor? {
+        didSet{ collectionView.backgroundColor = katViewBackgroundColor }
+    }
+    
     //MARK: - Model
     private var items: [String]
     
@@ -28,9 +32,10 @@ public class KatView: UIView {
     public weak var delegate: KatViewDelegate?
     
     //MARK: - Init
-    init(frame: CGRect, items: [String] = []) {
+    init(frame: CGRect = .zero, items: [String] = []) {
         self.items = items
         super.init(frame: frame)
+        
         configureCollectionView()
     }
     
@@ -59,7 +64,7 @@ extension KatView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.items.count
     }
-
+    
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KatViewCell.identifier, for: indexPath) as? KatViewCell else { return UICollectionViewCell() }
         cell.configure(with: self.items[indexPath.row])
